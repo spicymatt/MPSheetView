@@ -22,21 +22,28 @@
 
 @implementation MPSheetView
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if(self != nil) {
+        self.ortographicScale = 1.15f;
+        self.backgroundDiffuseColor = [NSColor colorWithCalibratedWhite:0.4 alpha:1.0];
+        self.backgroundAmbientColor = [NSColor colorWithCalibratedWhite:0.1 alpha:1.0];
+        
+        self.selectionSpotlightColor = [NSColor colorWithCalibratedHue:44.0f/360.0f
+                                                            saturation:18.0f/100.0f
+                                                            brightness:.27
+                                                                 alpha:1.0];
+        
+        self.textColor = [NSColor whiteColor];
+
+        self.titleFontSize = 12.0f;
+        self.subtitleFontSize = 10.0f;
+    }
+    return self;
+}
+
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
-    self.ortographicScale = 1.15f;
-    self.backgroundDiffuseColor = [NSColor colorWithCalibratedWhite:0.4 alpha:1.0];
-    self.backgroundAmbientColor = [NSColor colorWithCalibratedWhite:0.1 alpha:1.0];
-    
-    self.selectionSpotlightColor = [NSColor colorWithCalibratedHue:44.0f/360.0f
-                                                        saturation:18.0f/100.0f
-                                                        brightness:.27
-                                                             alpha:1.0];
-    
-    self.titleFontSize = 12.0f;
-    self.subtitleFontSize = 10.0f;
-    self.textColor = [NSColor whiteColor];
     
     [self prepareScene];
 }
@@ -143,13 +150,13 @@ static const CGFloat MPSheetViewCameraZDistance = 2.0f;
 
 - (NSArray *)textNodesForMasterNode:(SCNNode *)masterNode coverNode:(SCNNode *)coverNode item:(id<MPSheetItem>)item {
     SCNText *titleTextGeom = [SCNText textWithString:item.title extrusionDepth:0.0];
-    titleTextGeom.font = [NSFont systemFontOfSize:self.titleFontSize];
+    titleTextGeom.font = [NSFont labelFontOfSize:self.titleFontSize]; //[NSFont systemFontOfSize:];
     SCNNode *titleTextNode = [SCNNode new];
     titleTextNode.geometry = titleTextGeom;
     titleTextNode.name = @"title";
     
     SCNText *subtitleTextGeom = [SCNText textWithString:item.subtitle extrusionDepth:0.0];
-    subtitleTextGeom.font = [NSFont systemFontOfSize:self.subtitleFontSize];
+    subtitleTextGeom.font = [NSFont labelFontOfSize:self.subtitleFontSize];
     SCNNode *subtitleTextNode = [SCNNode new];
     subtitleTextNode.name = @"subtitle";
     subtitleTextNode.geometry = subtitleTextGeom;
@@ -571,6 +578,8 @@ static const CGFloat MPSheetViewCameraZDistance = 2.0f;
     
     if (node == nil) {
         self.highlightedItem = nil;
+        // inform the delegate that a nil selection highlight happened
+        [self.dataSource sheetView:self didHighlightItem:item];
         return;
     } else {
         self.highlightedItem = item;

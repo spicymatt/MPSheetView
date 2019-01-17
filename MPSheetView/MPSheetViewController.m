@@ -81,8 +81,9 @@
     NSParameterAssert(item);
 }
 
-- (void)sheetView:(MPSheetView *)sheetView didHighlightItem:(id<MPSheetItem>)item {
-    NSParameterAssert(item);    
+- (void)sheetView:(MPSheetView *)sheetView didHighlightItem:(id<MPSheetItem> _Nullable)item {
+    // We need to allow for nil items to capture when no selection is made
+    // NSParameterAssert(item);    
 }
 
 - (void)sheetView:(MPSheetView *)sheetView shouldPreviewItem:(id<MPSheetItem>)item {

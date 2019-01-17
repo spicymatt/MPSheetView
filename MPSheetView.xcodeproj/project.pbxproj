@@ -29,7 +29,7 @@
 		5F8AE82E1A45115E0007F282 /* biomed.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F8AE82D1A45115E0007F282 /* biomed.png */; };
 		5F8AE8321A45A04A0007F282 /* teh-manual.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F8AE8311A45A04A0007F282 /* teh-manual.png */; };
 		5F8AE8341A45A1120007F282 /* origin-of-species.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F8AE8331A45A1120007F282 /* origin-of-species.png */; };
-		5F8AE8921A460DD30007F282 /* book-cover.dae in Resources */ = {isa = PBXBuildFile; fileRef = 5F3644EF1A43A4D80047E973 /* book-cover.dae */; };
+		5F8AE8921A460DD30007F282 /* book-cover.dae in Resources */ = {isa = PBXBuildFile; fileRef = 5F3644EF1A43A4D80047E973 /* book-cover.dae */; settings = {ATTRIBUTES = ("--decompress", ); }; };
 		5F8AE8931A460DDA0007F282 /* origin-of-species.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F8AE8331A45A1120007F282 /* origin-of-species.png */; };
 		5F8AE8941A460DDA0007F282 /* teh-manual.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F8AE8311A45A04A0007F282 /* teh-manual.png */; };
 		5F8AE8951A460DDA0007F282 /* biomed.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F8AE82D1A45115E0007F282 /* biomed.png */; };
